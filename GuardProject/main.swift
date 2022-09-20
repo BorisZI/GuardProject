@@ -152,3 +152,51 @@ forTestGuard(numOne: 3, numTwo: 5)
 forTestGuard(numOne: nil, numTwo: 5)
 forTestGuard(numOne: 3, numTwo: nil)
 
+
+func forTestGuard2(numOne: Int, numTwo: Int) {
+    guard numOne > 0 else { return print("Бля первое число уже нил") }
+    guard numTwo > 0 else { return print("Бля второе число уже нил") }
+    print(numOne + numTwo)
+}
+forTestGuard(numOne: 3, numTwo: 5)
+forTestGuard(numOne: nil, numTwo: 5)
+forTestGuard(numOne: 3, numTwo: nil)
+
+
+// Использование с JSON  и т. д.
+
+class Person {
+    var id: String?
+    var residence: Residence?
+}
+
+class Residence {
+    var address: Address?
+}
+
+class Address {
+    var buikdingNumber: String?
+    var streetName: String?
+    var apartmentNumber: String?
+    
+}
+
+var person: Person?
+
+
+if let residence = person?.residence {
+    if let address = residence.address {
+        if let apartmentNumber = address.apartmentNumber {
+            print("The apartment number: \(apartmentNumber)")
+        }
+    }
+}
+
+// Опциональная последовательность
+
+if let apartmentNumber = person?.residence?.address?.apartmentNumber {
+    print("The apartment number: \(apartmentNumber)")
+}
+
+
+// 
